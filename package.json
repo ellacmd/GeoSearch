@@ -1,0 +1,23 @@
+{
+  "name": "geosearch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {
+    "eslint": "^7.26.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ellacmd/GeoSearch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ellacmd/GeoSearch/issues"
+  },
+  "homepage": "https://github.com/ellacmd/GeoSearch#readme"
+}
