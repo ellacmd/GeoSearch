@@ -1,27 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoSearch</title>
     <link rel="stylesheet" href="styles.css">
-     <!-- Icons -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-     <!-- Font -->
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" />
 </head>
+
 <body>
     <header>
         <h1 class="title">Geosearch</h1>
         <p class="slogan">...search for a place and get weather information instantly</p>
     </header>
     <main>
-        <div class="searchbox">
-            <input type="search" name="search" id="search" class="search" placeholder="search for a place">
-            <button class="searchbtn"><i class="fas fa-search"></i>search</button>
+        <div class="searchbox" id="form">
+            <form class="searchform" id="form">
+                <input type="search" name="search" id="search" class="search" placeholder="search for a place">
+                <button type="submit" class="searchbtn"><i class="fas fa-search"></i>search</button>
+            </form>
+            <div class="error" id="error">
+                <p class="error-msg">
+                    Oops! Could not find address please try another!
+                </p>
+            </div>
+        </div>
+        <div id="map" class="map">
+            <img src="./img/map.png" alt="">
         </div>
     </main>
     <footer>2021&copy;GeoSearch. All rights reserved.</footer>
     <script src="./script.js"></script>
 </body>
+
 </html>
