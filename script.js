@@ -25,7 +25,7 @@ const getLocation = async (address) => {
   }
 };
 const getWeather = async (location) => {
-  const API_KEY = '712f1bdf3705276004500faca1f99168';
+  const API_KEY = "712f1bdf3705276004500faca1f99168";
 
   try {
     const url = `http://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${API_KEY}&units=metric`;
@@ -68,7 +68,21 @@ function initMap() {
     center,
   });
 }
-
+const convertTemp = (e) => {
+  const initTemp = e.parentNode.previousElementSibling.querySelector(".temp");
+  // split number from unit with regex
+  const tempDetails = initTemp.innerHTML.match(/([\d\.]+)(.*)/);
+  const tempNum = tempDetails[1];
+  const tempUnit = tempDetails[2];
+  if (tempUnit === "℃") {
+    const fahrenheit = ((Number(tempNum) * 9) / 5 + 32).toFixed(2);
+    initTemp.innerHTML = `${fahrenheit}&#8457;`;
+  } else {
+    // (24.42°F − 32) × 5/9
+    const celsius = (((Number(tempNum) - 32) * 5) / 9).toFixed(2);
+    initTemp.innerHTML = `${celsius}&#8451;`;
+  }
+};
 const renderMap = async (e) => {
   e.preventDefault();
   const searchAddress = document.getElementById("search").value;
@@ -97,8 +111,8 @@ const renderMap = async (e) => {
            </div>
        </div>
        <div class="actions">
-           <button class="convert">Convert temperature</button>
-           <button class="share">Share</button>
+       <button class="convert" id="convert" onclick="convertTemp(this)">Convert temperature</button>
+       <button class="share" id="share" >Share</button>
        </div>     
        </div>
        `
