@@ -162,6 +162,11 @@ footer {
   cursor: pointer;
 }
 
+.actions a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .actions button:hover {
   background-color: #ccc;
 }
