@@ -112,7 +112,13 @@ const renderMap = async (e) => {
        </div>
        <div class="actions">
        <button class="convert" id="convert" onclick="convertTemp(this)">Convert temperature</button>
-       <button class="share" id="share" >Share</button>
+       <button class="share" id="share" >
+       <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.google.com/maps/search/?api=1&query=${encodeURI(
+         locationInfo.formattedAddress
+       )}" target="_blank" rel="noopener" class="share">
+       <i class="fab fa-facebook-f"></i> Share
+       </a>
+   </button>
        </div>     
        </div>
        `
