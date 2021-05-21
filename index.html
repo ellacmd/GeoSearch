@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GeoSearch</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" href="styles.css">
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -31,10 +32,13 @@
             </div>
         </div>
         <div id="map" class="map">
-            <img src="./img/map.png" alt="">
         </div>
     </main>
     <footer>2021&copy;GeoSearch. All rights reserved.</footer>
+    <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXMipmXaHFg8t9o7kiam9dL6nM0RX36HI&callback=initMap&libraries=&v=weekly"
+    async
+  ></script>
     <script src="./script.js"></script>
 </body>
 

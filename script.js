@@ -1,4 +1,4 @@
-const API_KEY = "AIzaSyDNNTpLE8zgFxtdCGGT9FmuX1ii_macfak";
+const API_KEY = "AIzaSyDXMipmXaHFg8t9o7kiam9dL6nM0RX36HI";
 const form = document.getElementById("form");
 const error = document.getElementById("error");
 
@@ -25,12 +25,44 @@ const getLocation = async (address) => {
   }
 };
 
+// Initiates static map
+function initMap() {
+  const center = { lat: 9.0556, lng: 7.4914 };
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 5,
+    center,
+  });
+}
+
 const renderMap = async (e) => {
   e.preventDefault();
   const searchAddress = document.getElementById("search").value;
   const locationInfo = await getLocation(searchAddress);
 
-  console.log(locationInfo);
+  if (!locationInfo) return;
+
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 15,
+    center: locationInfo.location,
+  });
+
+  const contentString = `
+        <div>
+            This is a weather info container
+        </div>
+        `;
+
+  const infowindow = new google.maps.InfoWindow({
+    content: contentString,
+  });
+  const marker = new google.maps.Marker({
+    position: locationInfo.location,
+    map,
+    title: `Click to get weather information`,
+  });
+  marker.addListener("click", () => {
+    infowindow.open(map, marker);
+  });
 };
 
 // Event listeners
