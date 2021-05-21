@@ -46,7 +46,7 @@ main {
   left: 50%;
   transform: translateX(-50%);
   width: 30rem;
-  max-width: 100%; 
+  max-width: 100%;
   z-index: 2;
 }
 
@@ -106,23 +106,67 @@ main {
   margin-right: 0.2rem;
 }
 .map {
-    height: 100%;
-    width: 100%;
-    min-height: 100vh;
-    z-index: 1;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 1;
 }
 
 /* Footer */
 footer {
   font-size: 1rem;
   text-align: center;
-padding: 2rem;
+  padding: 2rem;
   color: #fff;
   background-image: linear-gradient(35deg, #ccc, #555);
 }
 
+/* Weather styles */
+
+.weather {
+  max-width: 20rem;
+  padding: 0.5rem;
+}
+.content {
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.icon img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.desc-location {
+  font-weight: bold;
+}
+
+.location {
+  color: lightcoral;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.actions button {
+  font-family: inherit;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.actions button:hover {
+  background-color: #ccc;
+}
 @media only screen and (max-width: 500px) {
   .searchbox {
-      top: 59px;
+    top: 59px;
   }
 }

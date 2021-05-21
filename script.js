@@ -24,7 +24,42 @@ const getLocation = async (address) => {
     console.log(error);
   }
 };
+const getWeather = async (location) => {
+  const API_KEY = '712f1bdf3705276004500faca1f99168';
 
+  try {
+    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${API_KEY}&units=metric`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if (!data) {
+      return;
+    }
+
+    const locationName = data.name;
+    const country = data.sys.country;
+    const shortDesc = data.weather[0].main;
+    const description = data.weather[0].description;
+    const icon = data.weather[0].icon;
+    const iconurl = `http://openweathermap.org/img/w/${icon}.png`;
+    const windSpeed = data.wind.speed;
+    const temperature = data.main.temp;
+    const humidity = data.main.humidity;
+
+    return {
+      locationName,
+      country,
+      shortDesc,
+      description,
+      iconurl,
+      windSpeed,
+      temperature,
+      humidity,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
 // Initiates static map
 function initMap() {
   const center = { lat: 9.0556, lng: 7.4914 };
@@ -42,15 +77,38 @@ const renderMap = async (e) => {
   if (!locationInfo) return;
 
   const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 15,
+    zoom: 10,
     center: locationInfo.location,
   });
+  // GET WEATHER INFO AND ADD TO CONTENT STRING
 
-  const contentString = `
-        <div>
-            This is a weather info container
-        </div>
-        `;
+  const weatherInfo = await getWeather(locationInfo.location);
+
+  const contentString = weatherInfo
+    ? `
+       <div class="weather">
+       <div class="content">
+           <div class="icon">
+               <img src=${weatherInfo.iconurl} alt="weather icon">
+           </div>
+           <div class="desc">
+               <p class="desc-location"><span class="location">${weatherInfo.locationName}, ${weatherInfo.country},</span> ${weatherInfo.description}</p>
+               <p class="desc-details"><span class="temp">${weatherInfo.temperature}&#8451;</span>, wind ${weatherInfo.windSpeed} m/s. ${weatherInfo.shortDesc} ${weatherInfo.humidity} %</p>
+           </div>
+       </div>
+       <div class="actions">
+           <button class="convert">Convert temperature</button>
+           <button class="share">Share</button>
+       </div>     
+       </div>
+       `
+    : `
+       <div class="error">
+               <p class="error-msg">
+                   Oops! Could not get weather for this location!
+               </p>
+       </div>      
+       `;
 
   const infowindow = new google.maps.InfoWindow({
     content: contentString,
