@@ -28,7 +28,7 @@ const getWeather = async (location) => {
   const API_KEY = "712f1bdf3705276004500faca1f99168";
 
   try {
-    const url = `http://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${API_KEY}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.lng}&appid=${API_KEY}&units=metric`;
     const response = await fetch(url);
     const data = await response.json();
 
